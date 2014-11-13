@@ -12,7 +12,7 @@ describe('Patients', function () {
     });
 
     describe('getPatient', function() {
-        it('should call getPatient with patientid', inject(function(Patients) {
+        it('should call getPatient with patientid', function(){
             $httpBackend.expectGET('/patients/123e4567-e89b-12d3-a456-426655440000')
                 .respond({
                     'patientId': '123e4567-e89b-12d3-a456-426655440000',
@@ -28,7 +28,7 @@ describe('Patients', function () {
             expect(result.medicalId).toBe('');
             expect(result.firstName).toBe('John');
             expect(result.lastName).toBe('Connor');
-        }));
+       });
     });
 
 //TODO: Add success and failure methods for createPatient
