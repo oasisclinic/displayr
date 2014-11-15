@@ -23,12 +23,19 @@ describe('Interceptors', function() {
 
     //Replacing services with Jasmine Spies: Testing whether the interceptor uses a service.
     //http://angular-tips.com/blog/2014/06/introduction-to-unit-test-services/
-    describe('404 error', function () {
-        it('should launch a modal with Server Error in the title', function () {
-            $httpBackend.whenGET('/notfound').respond(404, 'Not Found');
-            var response = $http.get('/notfound');
-            $httpBackend.flush();
-            expect($modal.open).toHaveBeenCalled();
+    describe('Error Handling', function () {
+        it('should launch a modal on several HTTP Errors', function () {
+            var errors = [401, 403,  404, 500];
+            var response;
+
+            errors.forEach(function(errorCode, index) {
+                    $httpBackend.whenGET('/'+errorCode + '.html').respond(errorCode);
+                    response = $http.get('/'+errorCode+'.html');
+                    $httpBackend.flush();
+                    expect($modal.open.calls.count()).toEqual(index + 1);
+                    expect($modal.open.calls.mostRecent().args[0].templateUrl).toEqual('views/modals/' + errorCode + '.html');
+                    
+            });
         });
     });
 
