@@ -31,7 +31,6 @@ describe('Patients', function () {
        });
     });
 
-//TODO: Add success and failure methods for createPatient
     describe('createPatient', function() {
         it('should PUT a patient object to the server', inject(function(Patients) {
             var patient = {
