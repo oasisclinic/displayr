@@ -1,3 +1,10 @@
+/* Custom: Login */
+.form-signin {
+    max-width: 300px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
 /* Space out content a bit */
 body {
   padding-top: 20px;

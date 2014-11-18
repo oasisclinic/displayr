@@ -11,6 +11,11 @@ describe('Patients', function () {
         });
     });
 
+    afterEach(function () {
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
+    });
+
     describe('getPatient', function() {
         it('should call getPatient with patientid', function(){
             $httpBackend.expectGET('/patients/123e4567-e89b-12d3-a456-426655440000')

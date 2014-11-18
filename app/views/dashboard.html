@@ -1,1 +1,25 @@
-<p>This is the dashboard view.</p>
+<div class="row" ng-controller="DashboardCtrl">
+        <div class="col-md-6">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="patient in patients" ng-click={{log()}}>
+                                <td>{{ $index }}</td>
+                                <td><a href='#' ng-click="routePatientProfile({{patient.patientId}}"> {{ patient.firstName }}</a></td>
+                                <td><a href='#' ng-click="routePatientProfile({{patient.patientId}}">{{ patient.lastName }}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-primary btn-lg btn-block" ng-click="routeSurvey()"><span class="glyphicon glyphicon-list-alt"></span> Administer a Survey</button>
+            <button class="btn btn-primary btn-lg btn-block" ng-click="routeAddPatient()"><span class="glyphicon glyphicon-user"></span> Add a Patient</button>
+            <button class="btn btn-primary btn-lg btn-block" ng-click="routePatientProfile()"><span class="glyphicon glyphicon-eye-open"></span> Search Patient</button>
+        </div>
+</div>

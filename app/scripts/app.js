@@ -17,8 +17,14 @@ angular
     'ngSanitize',
     'ngTouch',
     'patient',
+    'resourceUtils',
+    'ui.bootstrap.tpls',
+    'ui.bootstrap.modal',
   ])
-  .config(function ($routeProvider) {
+  .config(function ($httpProvider, $logProvider, $routeProvider) {
+    $httpProvider.interceptors.push('APIInterceptor');
+    $logProvider.debugEnabled(true);
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/login.html',
@@ -27,7 +33,21 @@ angular
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+      .when('/addpatient', {
+        templateUrl: 'views/addpatient.html',
+        controller: 'AddpatientCtrl'
+      })
       .otherwise({
         redirectTo: '/'
-      });
+      })
+  }).run(function($rootScope, $modal) {
+
+        var error;
+        $rootScope.$on('apiError', function(event, data) {
+            error = $modal.open(data);
+        });
   });

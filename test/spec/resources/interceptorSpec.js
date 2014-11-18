@@ -17,7 +17,6 @@ describe('Interceptors', function() {
         it('should use $http to test', function () {
             expect($http).toBeDefined();
         });
-
     });
 
 
