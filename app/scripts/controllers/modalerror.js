@@ -8,7 +8,7 @@
  * Controller of the frontendMark2App
  */
 angular.module('frontendMark2App')
-  .controller('ModalerrorCtrl', function ($scope, $modalInstance,  error, body) {
+  .controller('ModalerrorCtrl', ['$scope', '$modalInstance', 'error', 'body', function ($scope, $modalInstance,  error, body) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -22,4 +22,4 @@ angular.module('frontendMark2App')
     $scope.ok = function() {
         $modalInstance.close();
     }
-  });
+  }]);

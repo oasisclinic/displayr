@@ -1,18 +1,21 @@
 'use strict';
+//This will have to wait to be tested
 
 describe('Controller: AddpatientCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('frontendMark2App'));
+  beforeEach(module('frontendMark2App').run(function($rootScope, $modal) {
+    
+  }));
 
   var AddpatientCtrl,
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($modal, $controller, $rootScope) {
     scope = $rootScope.$new();
     AddpatientCtrl = $controller('AddpatientCtrl', {
-      $scope: scope
+         $scope: scope,
     });
   }));
 

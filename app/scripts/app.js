@@ -18,13 +18,16 @@ angular
     'ngTouch',
     'patient',
     'resourceUtils',
+    'ui.bootstrap',
     'ui.bootstrap.tpls',
     'ui.bootstrap.modal',
   ])
-  .config(function ($httpProvider, $logProvider, $routeProvider) {
+  .config(function ($resourceProvider, $httpProvider, $logProvider, $routeProvider) {
     $httpProvider.interceptors.push('APIInterceptor');
+    
     $logProvider.debugEnabled(true);
 
+    $resourceProvider.defaults.stripTrailingSlashes = false;
     $routeProvider
       .when('/', {
         templateUrl: 'views/login.html',

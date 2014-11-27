@@ -15,7 +15,6 @@ angular.module('frontendMark2App')
       'Karma'
     ];
 
-    console.log("yo");
     $scope.patients = Patients.all();
 
     $scope.routeAddPatient = function () {

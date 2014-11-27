@@ -1,16 +1,15 @@
 describe('Interceptors', function() {
-    var $httpBackend, $http,  mockApp, $modal;
+    var $httpBackend, $http,  mockApp, rootScope;
 
-    beforeEach(module('resourceUtils', function ($httpProvider, $provide) { 
-            $modal = {};//replace $modal with a spy
-            $modal.open = jasmine.createSpy();
+    beforeEach(module('resourceUtils', function ($httpProvider) { 
             $httpProvider.interceptors.push('APIInterceptor');
-            $provide.value('$modal', $modal);
     }));
     beforeEach(function() {
         inject( function($injector) {
         $httpBackend = $injector.get('$httpBackend');
         $http = $injector.get('$http');
+        rootScope = $injector.get('$rootScope');
+        spyOn(rootScope, '$broadcast');
     })});
 
     describe('Test set up', function () {
@@ -31,9 +30,7 @@ describe('Interceptors', function() {
                     $httpBackend.whenGET('/'+errorCode + '.html').respond(errorCode);
                     response = $http.get('/'+errorCode+'.html');
                     $httpBackend.flush();
-                    expect($modal.open.calls.count()).toEqual(index + 1);
-                    expect($modal.open.calls.mostRecent().args[0].templateUrl).toEqual('views/modals/' + errorCode + '.html');
-                    
+                    expect(rootScope.$broadcast).toHaveBeenCalled();
             });
         });
     });

@@ -4,6 +4,7 @@ describe('Controller: ModalerrorCtrl', function () {
 
   // load the controller's module
   beforeEach(module('frontendMark2App'));
+  beforeEach(module('ui.bootstrap.modal'));
 
   var ModalerrorCtrl,
     scope;
