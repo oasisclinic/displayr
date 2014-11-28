@@ -49,17 +49,20 @@ angular
         templateUrl: 'views/survey.html',
         controller: 'SurveyCtrl'
       })
-      .when('/PatientProfile', {
+      .when('/patientprofile/:id', {
         templateUrl: 'views/patientprofile.html',
         controller: 'PatientprofileCtrl'
+      })
+      .when('/patientprofile/:patientid/graph/:surveyid', {
+        templateUrl: 'views/patientgraph.html',
+        controller: 'PatientgraphCtrl'
       })
       .otherwise({
         redirectTo: '/'
       })
   }).run(function($rootScope, $modal) {
-
-        var error;
+        var errorA;
         $rootScope.$on('apiError', function(event, data) {
-            error = $modal.open(data);
+            errorA = $modal.open(data);
         });
   });

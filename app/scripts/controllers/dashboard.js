@@ -21,11 +21,7 @@ angular.module('frontendMark2App')
         $location.path('/addpatient');
     };
 
-    $scope.routePatientProfile = function (pid) {
-        $location.path('/profile/' + pid);
-    };
-
-    $scope.routeSurvey = function () {
+      $scope.routeSurvey = function () {
         $location.path('/survey');
     };
   }]);

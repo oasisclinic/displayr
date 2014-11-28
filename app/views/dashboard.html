@@ -9,10 +9,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="patient in patients" ng-click={{log()}}>
+                        <tr ng-repeat="patient in patients">
                                 <td>{{ $index }}</td>
-                                <td><a href='#' ng-click="routePatientProfile('{{patient.patientId}}')"> {{ patient.firstName }}</a></td>
-                                <td><a href='#' ng-click="routePatientProfile('{{patient.patientId}}')">{{ patient.lastName }}</a></td>
+                                <td><a href='#/patientprofile/{{patient.patientId}}'> {{ patient.firstName }}</a></td>
+                                <td><a href='#/patientprofile/{{patient.patientId}}'>{{ patient.lastName }}</a></td>
                         </tr>
                     </tbody>
                 </table>
