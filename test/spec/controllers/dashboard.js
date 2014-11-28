@@ -6,6 +6,7 @@ describe('Controller: DashboardCtrl', function () {
                 $httpBackend,
                 scope,
                 $location;
+                var host = 'http://54.173.152.217';
 
                 // load the controller's module
                 beforeEach(module('frontendMark2App', function($provide){
@@ -51,7 +52,7 @@ describe('Controller: DashboardCtrl', function () {
                                 });
 
                 it('should fetch a list of of all the patients', function () {
-                                $httpBackend.expectGET('/patients/all').respond(200, backendPatients);
+                                $httpBackend.expectGET(host + '/api/patients/').respond(200, backendPatients);
                                 $httpBackend.flush();
                                 expect(scope.patients.length).toBe(4);
                                 });
@@ -59,7 +60,7 @@ describe('Controller: DashboardCtrl', function () {
                 it('should have methods to route the user to administer a survey, add a patient, and view a patient profile', function () {
 
                                 scope.routeSurvey();
-                                expect($location.path).toHaveBeenCalledWith('/givesurvey');
+                                expect($location.path).toHaveBeenCalledWith('/survey');
                                 scope.routeAddPatient();
                                 expect($location.path).toHaveBeenCalledWith('/addpatient');
                                 scope.routePatientProfile('1234');

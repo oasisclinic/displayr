@@ -22,7 +22,6 @@ angular.module('resourceUtils', []).factory('APIInterceptor', [ '$q', '$rootScop
                     modalOptions.templateUrl = 'views/modals/500.html';
                     break;
                 default:
-                    modalOptions.templateUrl = 'views/modals/error.html';
                     break;
             }
             $rootScope.$broadcast('apiError', modalOptions);

@@ -1,6 +1,7 @@
 describe('Patients', function () {
     var mockPatientResource, $httpBackend;
-
+    var host = 'http://54.173.152.217';
+    beforeEach(module('frontendMark2App'));
     beforeEach(module('patient'));
 
     beforeEach(function () {
@@ -18,7 +19,7 @@ describe('Patients', function () {
 
     describe('getPatient', function() {
         it('should call getPatient with patientid', function(){
-            $httpBackend.expectGET('/patients/123e4567-e89b-12d3-a456-426655440000')
+            $httpBackend.expectGET(host + '/api/patients/123e4567-e89b-12d3-a456-426655440000')
                 .respond({
                     'patientId': '123e4567-e89b-12d3-a456-426655440000',
                     'medicalId': '',
@@ -44,7 +45,7 @@ describe('Patients', function () {
                     'firstName': 'John',
                     'lastName': 'Connor',
                 };
-            $httpBackend.expectPOST('/patients/create', patient).respond(201, ''); 
+            $httpBackend.expectPOST(host + '/api/patients/create', patient).respond(201, ''); 
             var result = Patients.createPatient(patient);
             $httpBackend.flush();
         }));
@@ -65,7 +66,7 @@ describe('Patients', function () {
                     'lastName': 'Connor',
                 }];
 
-                $httpBackend.expectGET('/patients/all').respond(200, patients);
+                $httpBackend.expectGET(host + '/api/patients/').respond(200, patients);
                 var result = Patients.all();
                 $httpBackend.flush();
                 expect(result.length).toBe(patients.length);

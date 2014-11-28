@@ -26,6 +26,6 @@ angular.module('frontendMark2App')
     };
 
     $scope.routeSurvey = function () {
-        $location.path('/givesurvey');
+        $location.path('/survey');
     };
   }]);

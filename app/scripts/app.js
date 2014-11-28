@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'patient',
+    'surveys',
     'resourceUtils',
     'ui.bootstrap',
     'ui.bootstrap.tpls',
@@ -43,6 +44,14 @@ angular
       .when('/addpatient', {
         templateUrl: 'views/addpatient.html',
         controller: 'AddpatientCtrl'
+      })
+      .when('/survey', {
+        templateUrl: 'views/survey.html',
+        controller: 'SurveyCtrl'
+      })
+      .when('/PatientProfile', {
+        templateUrl: 'views/patientprofile.html',
+        controller: 'PatientprofileCtrl'
       })
       .otherwise({
         redirectTo: '/'
