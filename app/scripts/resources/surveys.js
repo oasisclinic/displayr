@@ -6,8 +6,7 @@ angular.module('surveys', ['ngResource']).factory('Surveys', ['$resource', funct
         'getAvailable': {method: 'GET', isArray: true},
         'responses': {
                     method: 'GET',
-                    isArray: true,
-                    url:'/api/surveys/responses/:surveyId/:patientId',
+                    url: host + '/api/surveys/responses/:surveyId/:patientId',
                     params: {surveyId: '@surveyId', patientId: '@patientId'}
         },
         'start': {
