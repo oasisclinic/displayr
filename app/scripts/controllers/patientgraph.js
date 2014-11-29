@@ -17,15 +17,31 @@ angular.module('frontendMark2App')
     
     var patientId = $route.current.params.patientid,
         surveyId = $route.current.params.surveyid;
+    function unpackResults(results){
+        var graphSeries = {};
+        var defKeys = Object.keys(results.definition);
 
-    $scope.results = Surveys.responses({patientId: patientId, surveyId: surveyId});
-    
-    $scope.$on('$viewContentLoaded', function(event) {
-        $('#chartContainer').highcharts({
-            title: {
-                text: 'Loaded',
-            },
+        //Make all definitions into highcharts buckets
+        defKeys.forEach(function (key) {
+            graphSeries[key] = { name: results.definition[key] };
+            graphSeries[key].data = [];
+            results.data.forEach(function(point){
+                graphSeries[key].data.push([point.data[key], point.date]);
+            });
         });
+
+
+        return graphSeries;
+    }
+
+    $scope.$on('$viewContentLoaded', function(event) {
+            $scope.results = Surveys.responses({patientId: patientId, surveyId: surveyId});
+            $scope.results.$promise.then(function(results) {
+                console.log(results);
+                var series = unpackResults(results);
+                console.log(series);
+            });
     });
     
+
   }]);
