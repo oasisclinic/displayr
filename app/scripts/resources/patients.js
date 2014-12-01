@@ -6,11 +6,10 @@ angular.module('patient', ['ngResource']).factory('Patients', ['$resource', func
                     method: 'GET',
                     params: {patientId: '@patientId'}
                 },
+                //Patients.createPatient({}, {patientObj}), empty object is param placeholder.
                 'createPatient': {
                         url: host + '/api/patients/create',
                         method: 'POST',
-                        params: {action: 'create'},
-                        patient: {}
                 },
                 'all': {method: 'GET', isArray: true},
             });

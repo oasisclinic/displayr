@@ -3,38 +3,19 @@
         <div class="form-group">
             <label for="firstName" class="col-md-2"> First Name</label>
             <div class="col-md-6">
-                <input type="text" class="form-control" id="firstName" placeholder="First Name" ng-model="firstName">
+                <input type="text" class="form-control" id="firstName" placeholder="First Name" ng-model="patient.firstName">
             </div>
         </div>
         <div class="form-group">
             <label for="lastName" class="col-md-2">Last Name</label>
             <div class="col-md-6">
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name" ng-model="lastName">
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" ng-model="patient.lastName">
             </div>
         </div>
         <div class="form-group">
             <label for="medicalID" class="col-md-2">Medical ID</label>
             <div class="col-md-6">
-                <input type="text" class="form-control" id="medID" placeholder="Medical ID" ng-model="medID">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="patientID" class="col-md-2">Patient ID</label>
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="patID" placeholder="Patient ID" ng-model="patientId">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="lastInteraction" class="col-md-2">Last Interaction</label>
-            <div class="col-md-6">
-                <p class="input-group">
-                    <input type="text" class="form-control"
-                           datepicker-popup="{{dateFormat}}" datepicker-options="{{dateOptions}}"
-                           ng-model="date" is-open="opened" close-text="Close">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </p>
+                <input type="text" class="form-control" id="medID" placeholder="Medical ID" ng-model="patient.medicalId">
             </div>
         </div>
         <button type="button" class="btn btn-primary btn-block btn-lg active" ng-click="submit()">Submit</button>
