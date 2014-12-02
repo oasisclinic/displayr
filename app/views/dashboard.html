@@ -4,15 +4,17 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>First Name</th>
                             <th>Last Name</th>
+                            <th>First Name</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="patient in patients">
+                        <tr ng-repeat="patient in patients | orderBy: 'lastName'">
                                 <td>{{ $index }}</td>
-                                <td><a href='#/patientprofile/{{patient.patientId}}'> {{ patient.firstName }}</a></td>
-                                <td><a href='#/patientprofile/{{patient.patientId}}'>{{ patient.lastName }}</a></td>
+                               <td><a href='#/patientprofile/{{patient.patientId}}'>{{ patient.lastName }}</a></td>
+                               <td><a href='#/patientprofile/{{patient.patientId}}'> {{ patient.firstName }}</a></td>
+                                
                         </tr>
                     </tbody>
                 </table>
