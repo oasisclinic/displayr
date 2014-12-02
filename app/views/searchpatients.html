@@ -1,0 +1,11 @@
+<div class="row">
+
+<div class="col-md-12">
+    <table class="table table-striped" show-filter="true"  ng-table="tableParams">
+            <tr ng-repeat="patient in $data">
+                <td data-title="'Last Name'" filter="{'lastName':'text'}"><a href="#/patientprofile/{{patient.patientId}}">{{patient.lastName}}</a></td>
+                <td data-title="'First Name'" filter="{'firstName':'text'}"><a href="#/patientprofile/{{patient.patientId}}">{{patient.firstName}}</a></td>
+            </tr>
+    </table>
+    </div>
+</div>

@@ -22,6 +22,7 @@ angular
     'ui.bootstrap',
     'ui.bootstrap.tpls',
     'ui.bootstrap.modal',
+    'ngTable'
   ])
   .config(function ($resourceProvider, $httpProvider, $logProvider, $routeProvider) {
     $httpProvider.interceptors.push('APIInterceptor');
@@ -56,6 +57,10 @@ angular
       .when('/patientprofile/:patientid/graph/:surveyid', {
         templateUrl: 'views/patientgraph.html',
         controller: 'PatientgraphCtrl'
+      })
+      .when('/searchpatients', {
+        templateUrl: 'views/searchpatients.html',
+        controller: 'SearchpatientsCtrl'
       })
       .otherwise({
         redirectTo: '/'

@@ -29,4 +29,8 @@ angular.module('frontendMark2App')
       $scope.routeSurvey = function () {
         $location.path('/survey');
     };
+
+    $scope.routeSearchPatients = function() {
+        $location.path('/searchpatients');
+    };
   }]);
