@@ -31,13 +31,12 @@ describe('Surveys', function() {
     });
 
     it('It should post a patientId to be surveyed, and a surveyId to survey', function () {
-        $httpBackend.expectPOST(host + '/api/surveys/start/1234/5678').respond(302, '');
-
+        $httpBackend.expectGET(host + '/api/surveys/requestStart/1234/5678').respond({
+            'pin' : 12345
+        });
         var result = mockSurveys.start({surveyId: '1234', patientId: '5678'});
-
         $httpBackend.flush();
-        $httpBackend.flush();
-
+        expect(result.pin).toBe(12345);
     });
 });
 

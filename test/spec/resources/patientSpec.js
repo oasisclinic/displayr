@@ -26,7 +26,7 @@ describe('Patients', function () {
                     'firstName': 'John',
                     'lastName': 'Connor',
                 });
-            var result = mockPatientResource.getPatient({action: '123e4567-e89b-12d3-a456-426655440000'});
+            var result = mockPatientResource.getPatient({patientId: '123e4567-e89b-12d3-a456-426655440000'});
 
             $httpBackend.flush();
 

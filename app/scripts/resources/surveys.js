@@ -10,9 +10,9 @@ angular.module('surveys', ['ngResource']).factory('Surveys', ['$resource', funct
                     params: {surveyId: '@surveyId', patientId: '@patientId'}
         },
         'start': {
-            url: host + '/api/surveys/start/:surveyId/:patientId',
+            url: host + '/api/evaulations/requestStart/:surveyId/:patientId',
             params: {surveyId: '@surveyId', patientId: '@patientId'},
-            method: 'POST'
+            method: 'GET'
         }
     });
 

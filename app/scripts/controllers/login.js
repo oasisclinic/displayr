@@ -17,7 +17,10 @@ angular.module('frontendMark2App')
     $scope.username = '';
     $scope.password = '';
     //TODO: OAuth this, make it an actually effective thing.
+
     $scope.login = function () {
-        $location.path('/dashboard');
+        if(true) {
+            $location.path('/dashboard');
+        }
     }
   }]);

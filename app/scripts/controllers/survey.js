@@ -30,6 +30,8 @@ angular.module('frontendMark2App')
 
     //TODO: Add functionality to make it required that both are selected.
     $scope.start = function() {
-        Surveys.start({surveyId: $scope.selectedSurvey, patientId: $scope.selectedPatient});
+        Surveys.start({surveyId: $scope.selectedSurvey, patientId: $scope.selectedPatient}).$promise.then(function(result) {
+            alert(result.pin);
+        });
     };
   }]);

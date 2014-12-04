@@ -1,12 +1,22 @@
 <div class="well" ng-controller="LoginCtrl">
-    <form role="form" class="form-signin">
+    <form name="loginform" role="form" class="form-signin">
         <div class="form-group">
             <label for="username" class="sr-only">User Name</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter User Name" required autofocus>
+            <input name="username"
+                   type="text"
+                   class="form-control"
+                   id="username"
+                   ng-model="username"
+                   placeholder="Enter User Name"
+                   ng-class="{'has-error': username.validity.valid}"
+                   required
+                   autofocus>
         </div>
         <div class="form-group">
             <label for="password" class="sr-only">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter Password" required>
+            <input type="password" class="form-control" id="password" ng-model="password"
+            placeholder="Enter Password" ng-class="{'has-error': password.validity.valid}"
+            ng-MinLength = "4" name="password" ng-required = "true"required>
         </div>
         <button class="btn btn-lg btn-primary btn-block" ng-click="login()">Sign In</button>
     </form>
