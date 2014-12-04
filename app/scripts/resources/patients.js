@@ -1,5 +1,5 @@
 angular.module('patient', ['ngResource']).factory('Patients', ['$resource', function ($resource) {
-   var host = 'http://54.173.152.217';
+   var host = 'http://localhost:8080';
    return $resource(host + '/api/patients/:patientId', null,
             {
                 'getPatient': {

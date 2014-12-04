@@ -1,6 +1,6 @@
 'use strict';
 angular.module('surveys', ['ngResource']).factory('Surveys', ['$resource', function($resource) {
-    var host = 'http://54.173.152.217';
+    var host = 'http://localhost:8080';
     return $resource(host + '/api/surveys/', null, 
     {
         'getAvailable': {method: 'GET', isArray: true},
