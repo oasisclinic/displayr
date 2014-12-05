@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h1 class="page-header">Welcome to the OASIS Database!</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Recent Surveys Taken</h3>
+        <table ng-table="tableParams" class="table table-hover ng-table-rowselected">
+            <tr ng-repeat="survey in $data" ng-click="changeSelection(survey)">
+                <td data-title="'Survey Name'" sortable="'surveyName'">
+                    {{survey.surveyName}}
+                </td>
+                <td data-title="'Completion Date'" sortable="'endDate'">
+                    {{survey.endDate ? (survey.endDate | date) : 'incomplete'}}
+                </td>
+                <td data-title="'Pin Code'" sortable="'pinCode'">
+                    {{survey.endDate ? '' : survey.pinCode}}
+                </div>
+                <td class="text-right">
+                    <a href="" class="btn btn-primary btn-sm" ng-if="survey.endDate" ui-sref="patients.response({evaluationId: survey.evaluationId, patientId:survey.patientId})">View Response</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

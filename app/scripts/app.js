@@ -30,10 +30,16 @@ angular
     .config(['$stateProvider', function($stateProvider) {
 
         $stateProvider.state('home', {
-            url: '',
-            template: 'Welcome!'
+            url: '/',
+            templateUrl: '/views/home.html',
+            controller: 'HomeCtrl'
         });
-
+        $stateProvider.state('entry', {
+            url: '',
+            templateUrl: '/views/home.html',
+            controller: 'HomeCtrl'
+        });
+        
         $stateProvider.state('patients', {
             url: '/patients/{patientId}',
             template: '<div ui-view></div>',

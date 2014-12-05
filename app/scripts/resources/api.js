@@ -62,6 +62,14 @@ angular.module('api', ['ngResource'])
                     surveyId: '@surveyId',
                     patientId: '@patientId'
                 }
+            },
+            'recent': {
+                method: 'GET',
+                url: host + '/api/evaluations?limit=:limit',
+                params: {
+                    limit: '@limit',
+                },
+                isArray: true
             }
         });
 
