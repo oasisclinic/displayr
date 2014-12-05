@@ -1,33 +1,53 @@
 <div class="row">
     <div class="col-xs-12">
-        <h1 class="page-header">{{patient.firstName + " " + patient.lastName}}</h1>
-        <p>ID: {{patient.medicalId}}<br>Last Interaction: {{patient.lastInteraction | date : 'short'}}</p>
-
+        <div class="page-header">
+              <h1>Patient Profile</h1>
+            </div>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <h3>Surveys Taken</h3>
-        <table ng-table="tableParams" class="table table-hover ng-table-rowselected">
-            <tr ng-repeat="survey in $data" ng-click="changeSelection(survey)">
-                <td data-title="'Survey Name'" sortable="'surveyName'">
-                    {{survey.surveyName}}
-                </td>
-                <td data-title="'Create Date'" sortable="'endDate'">
-                    {{survey.startDate | date : 'short'}}
-                </td>
-                <td data-title="'Completion Date'" sortable="'endDate'">
-                    {{survey.endDate ? (survey.endDate | date : 'short') : 'incomplete'}}
-                </td>
-                <td data-title="'Pin Code'" sortable="'pinCode'">
-                    {{survey.endDate ? '' : survey.pinCode}}
-                </div>
-                <td class="text-right">
-                    <a href="" class="btn btn-primary btn-sm" ng-if="survey.endDate" ui-sref="patients.response({evaluationId: survey.evaluationId})">View Response</a>
-                    <a href="" class="btn btn-success btn-sm" ng-if="survey.endDate" ui-sref="patients.chart({surveyId: survey.surveyId})">Chart</a>
-                    <a href="" class="btn btn-danger btn-sm" ng-click="remove(survey.evaluationId)">Delete</a>
-                </td>
-            </tr>
-        </table>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>{{patient.firstName + " " + patient.lastName}}</h3>
+            </div>
+            <div class="panel-body">
+                ID: {{patient.medicalId}}
+                <br>Last Interaction: {{patient.lastInteraction | date : 'short'}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Surveys</h3>
+            </div>
+            <div class="panel-body">
+                <table ng-table="tableParams" class="table table-hover ng-table-rowselected">
+                    <tr ng-repeat="survey in $data" ng-click="changeSelection(survey)">
+                        <td data-title="'Survey Name'" sortable="'surveyName'">
+                            {{survey.surveyName}}
+                        </td>
+                        <td data-title="'Create Date'" sortable="'endDate'">
+                            {{survey.startDate | date : 'short'}}
+                        </td>
+                        <td data-title="'Completion Date'" sortable="'endDate'">
+                            {{survey.endDate ? (survey.endDate | date : 'short') : 'incomplete'}}
+                        </td>
+                        <td data-title="'Pin Code'" sortable="'pinCode'">
+                            {{survey.endDate ? '' : survey.pinCode}}
+                        </td>
+                        <td class="text-right">
+                            <a href="" class="btn btn-primary btn-sm" ng-if="survey.endDate" ui-sref="patients.response({evaluationId: survey.evaluationId})">View Response</a>
+                            <a href="" class="btn btn-success btn-sm" ng-if="survey.endDate" ui-sref="patients.chart({surveyId: survey.surveyId})">Chart</a>
+                            <a href="" class="btn btn-danger btn-sm" ng-click="remove(survey.evaluationId)">Delete</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

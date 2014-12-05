@@ -1,12 +1,17 @@
+
 <div class="row">
     <div class="col-xs-12">
-        <h1 class="page-header">Welcome to the OASIS Database!</h1>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        <h3>Recent Surveys</h3>
-        <table ng-table="tableParams" class="table table-hover ng-table-rowselected">
+        <div class="page-header">
+            <h1>Welcome to the OASIS Database!</h1>
+            <p><i>Created with love by students at The University of North Carolina at Chapel Hill</i></p>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Recent Surveys</h3>
+            </div>
+            <div class="panel-body">
+                <table ng-table="tableParams" class="table table-hover ng-table-rowselected">
             <tr ng-repeat="survey in $data" ng-click="changeSelection(survey)">
                 <td data-title="'Survey Name'" sortable="'surveyName'">
                     {{survey.surveyName}}
@@ -25,5 +30,7 @@
                 </td>
             </tr>
         </table>
+            </div>
+        </div>
     </div>
 </div>
