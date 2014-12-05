@@ -16,9 +16,13 @@
                 <td data-title="'Completion Date'" sortable="'endDate'">
                     {{survey.endDate ? (survey.endDate | date) : 'incomplete'}}
                 </td>
+                <td data-title="'Pin Code'" sortable="'pinCode'">
+                    {{survey.endDate ? '' : survey.pinCode}}
+                </div>
                 <td class="text-right">
                     <a href="" class="btn btn-primary btn-sm" ng-if="survey.endDate" ui-sref="patients.response({evaluationId: survey.evaluationId})">View Response</a>
                     <a href="" class="btn btn-success btn-sm" ng-if="survey.endDate" ui-sref="patients.chart({surveyId: survey.surveyId})">Chart</a>
+                    <a href="" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
         </table>

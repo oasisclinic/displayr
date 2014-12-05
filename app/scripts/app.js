@@ -16,14 +16,15 @@ angular
         'ngRoute',
         'ngSanitize',
         'ngTouch',
-        'api',
         'ui.bootstrap',
         'ui.bootstrap.tpls',
         'ui.bootstrap.modal',
         'ui.router',
         'ngTable',
+        'api',
         'auth',
         'http-auth-interceptor',
+        'angular-loading-bar',
         'highcharts-ng'
     ])
     .config(['$stateProvider', function($stateProvider) {
@@ -86,6 +87,9 @@ angular
             controller: 'TakeSurveyCtrl'
         });
 
+    }])
+    .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.includeSpinner = false;
     }])
     .run(function($rootScope, $modal, authService) {
         $rootScope.$on('event:auth-loginRequired', function() {
