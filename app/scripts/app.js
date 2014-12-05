@@ -119,7 +119,8 @@ angular
                 $rootScope.loginModal = $modal.open({
                     templateUrl: 'views/modals/login.html',
                     backdrop: 'static',
-                    keyboard: false
+                    keyboard: false,
+                    controller: 'LoginCtrl'
                 });
             }
 

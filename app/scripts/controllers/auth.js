@@ -53,7 +53,7 @@ angular.module('auth', [])
             }
         };
     })
-    .controller('LoginController', function($scope, $rootScope, authService, securityService, Session) {
+    .controller('LoginCtrl', function($scope, $rootScope, authService, securityService, Session) {
         $scope.credentials = {
             username: '',
             password: ''
