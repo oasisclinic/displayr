@@ -113,38 +113,6 @@ angular
     .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
     }])
-    .config(['$httpProvider', function($httpProvider, $modal) {
-        $httpProvider.interceptors.push(['$rootScope', '$q', function($rootScope, $q, $modal) {
-            return {
-                responseError: function(rejection) {
-
-                    var modalOptions = {
-                        templateUrl: 'views/modals/generic-modal.html',
-                        resolve: {
-                            message: function() {
-                                if(rejection.data) {
-                                    return rejection.data.message;
-                                } else {
-                                    return 'We could not get in touch with the server. Please check your internet connection or contact an administrator.';
-                                }
-                            },
-                            title: function() {
-                                return 'Oh No!'
-                            }
-                        },
-                        controller: function($scope, message, title) {
-                            $scope.message = message;
-                            $scope.title = title;
-                        }
-                    };
-
-                    $rootScope.$broadcast('event:api-error', modalOptions);
-
-                    return $q.reject(rejection);
-                }
-            };
-        }]);
-    }])
     .run(function($rootScope, $modal, authService) {
         $rootScope.$on('event:auth-loginRequired', function() {
             if (!$rootScope.loginModal) {
