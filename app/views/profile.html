@@ -22,7 +22,7 @@
                 <td class="text-right">
                     <a href="" class="btn btn-primary btn-sm" ng-if="survey.endDate" ui-sref="patients.response({evaluationId: survey.evaluationId})">View Response</a>
                     <a href="" class="btn btn-success btn-sm" ng-if="survey.endDate" ui-sref="patients.chart({surveyId: survey.surveyId})">Chart</a>
-                    <a href="" class="btn btn-danger btn-sm">Delete</a>
+                    <a href="" class="btn btn-danger btn-sm" ng-click="remove(survey.evaluationId)">Delete</a>
                 </td>
             </tr>
         </table>

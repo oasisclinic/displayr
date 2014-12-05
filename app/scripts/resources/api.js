@@ -48,6 +48,13 @@ angular.module('api', ['ngResource'])
                     surveyId: '@evaluationId'
                 }
             },
+            'remove': {
+                method: 'DELETE',
+                url: host + '/api/evaluations/:evaluationId',
+                params: {
+                    surveyId: '@evaluationId'
+                }
+            },
             'make': {
                 method: 'GET',
                 url: host + '/api/evaluations/start/:patientId/:surveyId',
