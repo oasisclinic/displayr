@@ -36,18 +36,6 @@
                 </button>
                 <a class="navbar-brand" href="#">OASIS Database</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li role="presentation"><a href="#/dashboard">Home</a>
-                    </li>
-                    <li role="presentation"><a ui-sref="search" href="">Search</a>
-                    </li>
-                    <li role="presentation"><a href="#/addpatient">Add Patient</a>
-                    </li>
-                    <li role="presentation"><a href="#/survey">Survey</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 
@@ -55,7 +43,7 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a>
+                    <li><a href="#" ui-sref="search">Patient Search</a>
                     </li>
                     <li><a href="#">Reports</a>
                     </li>

@@ -11,9 +11,9 @@ angular.module('frontendMark2App')
     .controller('ProfileCtrl', function($scope, $stateParams, $filter, patients, evaluations, ngTableParams) {
 
         // load patient
-        $scope.patient = patients.get({
-            patientId: $stateParams.patientId
-        });
+        // $scope.patient = patients.get({
+        //     patientId: $stateParams.patientId
+        // });
 
         // loat evaluations
         evaluations.byPatientId({

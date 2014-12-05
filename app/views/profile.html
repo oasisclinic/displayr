@@ -18,15 +18,10 @@
                 </td>
                 <td class="text-right">
                     <a href="" class="btn btn-primary btn-sm" ng-if="survey.endDate" >View Response</a>
-                    <a href="" class="btn btn-success btn-sm" ng-if="survey.endDate" ui-sref="chart({patientId: patient.patientId, surveyId: survey.surveyId})">Chart</a>
+                    <a href="" class="btn btn-success btn-sm" ng-if="survey.endDate" ui-sref="patients.chart({surveyId: survey.surveyId})">Chart</a>
                 </td>
             </tr>
         </table>
     </div>
 </div>
-<div class="row">
-    <div class="col-xs-12">
-        <h3>test</h3>
-        <highchart id="chart1" config="chartConfig"></highchart>     
-    </div>
-</div>
+<div ui-view></div>

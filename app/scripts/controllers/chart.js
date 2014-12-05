@@ -10,23 +10,15 @@
 angular.module('frontendMark2App')
     .controller('ChartCtrl', function($scope, $stateParams, $filter, patients, evaluations) {
 
-        // charting
-
-        // $scope.addPoints = function() {
-        //     var seriesArray = $scope.chartConfig.series
-        //     var rndIdx = Math.floor(Math.random() * seriesArray.length);
-        //     seriesArray[rndIdx].data = seriesArray[rndIdx].data.concat([1, 10, 20])
-        // };
-
         evaluations.bySurveyId({
             patientId: $stateParams.patientId,
             surveyId: $stateParams.surveyId,
         }).$promise.then(function(data) {
 
             var allData = extract(data);
-            $scope.addSeries(allData[0]);
-            $scope.addSeries(allData[1]);
-            console.log(allData[0].data);
+            for(var series in allData) {
+                $scope.addSeries(allData[series]);
+            }
             $scope.toggleLoading();
 
         });
@@ -43,7 +35,6 @@ angular.module('frontendMark2App')
                 response.data.forEach(function(point) {
                     allData[question].data.push([point.date, point.data[question]]);
                 });
-                //allData[question] = (question == 0) ? true : false;
             }
 
             return allData;
@@ -54,8 +45,6 @@ angular.module('frontendMark2App')
             if (!$scope.chartConfig.series) {
                 $scope.chartConfig.series = [];
             }
-
-            console.log($scope.chartConfig.series.length);
             $scope.chartConfig.series.push(data);
         }
 
@@ -63,12 +52,6 @@ angular.module('frontendMark2App')
             var seriesArray = $scope.chartConfig.series
             seriesArray.splice(index, 1)
         }
-
-        // $scope.removeRandomSeries = function() {
-        //     var seriesArray = $scope.chartConfig.series
-        //     var rndIdx = Math.floor(Math.random() * seriesArray.length);
-        //     seriesArray.splice(rndIdx, 1)
-        // }
 
         $scope.toggleLoading = function() {
             this.chartConfig.loading = !this.chartConfig.loading
@@ -82,13 +65,12 @@ angular.module('frontendMark2App')
                 }
             },
             series: null,
-            
+
             title: {
-                text: 'Hello'
+                text: $scope.patient.firstName + ' ' + $scope.patient.lastName
             },
             xAxis: {
-                dateTimeLabelFormats:
-                {
+                dateTimeLabelFormats: {
                     millisecond: '%m\/%d\/%y %H:%M',
                     second: '%m\/%d\/%y %H:%M',
                     minute: '%m\/%d\/%y %H:%M',
@@ -97,7 +79,7 @@ angular.module('frontendMark2App')
                     week: '%m\/%Y',
                     month: '%m\/%Y',
                     year: '%Y'
-            },
+                },
                 type: 'datetime',
             },
             loading: true

@@ -36,7 +36,7 @@ angular.module('frontendMark2App')
         });
 
         $scope.changeSelection = function(patient) {
-            $state.go('profile', {patientId: patient.patientId});
+            $state.go('patients.profile', {patientId: patient.patientId});
         };
 
     });
