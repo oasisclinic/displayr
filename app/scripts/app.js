@@ -80,6 +80,11 @@ angular
             templateUrl: 'views/ready-survey.html',
             controller: 'SurveyReadyCtrl'
         });
+        $stateProvider.state('survey.take', {
+            url: '/take',
+            templateUrl: 'views/take-survey.html',
+            controller: 'TakeSurveyCtrl'
+        });
 
     }])
     .run(function($rootScope, $modal, authService) {

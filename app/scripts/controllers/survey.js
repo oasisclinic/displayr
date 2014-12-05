@@ -77,8 +77,21 @@ angular.module('frontendMark2App')
         };
 
     })
-    .controller('SurveyReadyCtrl', function($scope, $filter, $state, $stateParams, evaluations) {
+    .controller('SurveyReadyCtrl', function($stateParams, $scope, evaluations) {
 
-        $scope.pin = evaluations.make({patientId: $stateParams.patientId, surveyId: $stateParams.surveyId});
+        $scope.pin = evaluations.make({
+            patientId: $stateParams.patientId,
+            surveyId: $stateParams.surveyId
+        });
+
+    })
+    .controller('TakeSurveyCtrl', function($scope, $http, $window) {
+
+        $scope.pin = function(pinCode) {
+            $http.get("http://localhost:8080/api/evaluations/start/" + pinCode)
+            .success(function(response) {
+                $window.location.href = response.url;
+            });
+        }
 
     });
