@@ -41,25 +41,4 @@ angular.module('frontendMark2App')
             $scope.data = data;
         });
 
-        $scope.loadGraph = function(surveyId) {
-            evaluations.bySurveyId({
-                patientId: $stateParams.patientId,
-                surveyId: surveyId,
-            }).$promise.then(function(data) {
-                
-                console.log(data);
-
-                $scope.chartData = data;
-            });
-        };
-
-        //   $scope.surveys = Surveys.getAvailable(); //TODO: We need a method that actually gets the surveys a particular patient has completed.
-        //   $scope.selected;
-        //   $scope.select = function($index) {
-        //       $scope.selected = $index;
-        //   }
-
-        //   $scope.routeGraph = function() {
-        //       $location.path('/patientprofile/' + $scope.patient.patientId + '/graph/' + $scope.surveys[$scope.selected].id);
-        //   }
     });

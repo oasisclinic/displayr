@@ -24,7 +24,8 @@ angular
         'ui.router',
         'ngTable',
         'auth',
-        'http-auth-interceptor'
+        'http-auth-interceptor',
+        'highcharts-ng'
     ])
     .config(['$stateProvider', function($stateProvider) {
         $stateProvider.state('patients', {
@@ -38,9 +39,14 @@ angular
             controller: 'SearchCtrl'
         });
         $stateProvider.state('profile', {
-            url: 'patient/{patientId}',
+            url: '/patient/{patientId}',
             templateUrl: 'views/profile.html',
             controller: 'ProfileCtrl'
+        });
+        $stateProvider.state('chart', {
+            url: '/patient/chart/{patientId}/{surveyId}',
+            templateUrl: 'views/chart.html',
+            controller: 'ChartCtrl'
         });
     }])
     // .config(function($resourceProvider, $httpProvider, $logProvider, $routeProvider) {

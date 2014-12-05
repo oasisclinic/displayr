@@ -39,8 +39,7 @@ angular.module('api', ['ngResource'])
                 params: {
                     surveyId: '@surveyId',
                     patientId: '@patientId'
-                },
-                isArray: true
+                }
             },
         });
 
