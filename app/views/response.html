@@ -1,6 +1,16 @@
 <div class="row">
     <div class="col-md-12">
     	<h1 class="page-header">View Response</h1>
+    	<p>
+    	Name: {{patient.firstName + ' ' + patient.lastName}}<br>
+    	Survey: {{evaluation.surveyName}}<br>
+    	Created: {{evaluation.startDate | date : 'short'}}<br>
+    	Started: {{evaluation.data.StartDate}}<br>
+    	Finished: {{evaluation.data.EndDate}}<br>
+    	Saved: {{evaluation.endDate | date : 'short'}}<br>
+    	Complete: {{evaluation.complete}}<br>
+
+    	</p>
         {{evaluation}}
     </div>
 </div>

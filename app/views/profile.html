@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-12">
         <h1 class="page-header">{{patient.firstName + " " + patient.lastName}}</h1>
-        <p>ID: {{patient.medicalId}}<br>Last Interaction: {{patient.lastInteraction | date}}</p>
+        <p>ID: {{patient.medicalId}}<br>Last Interaction: {{patient.lastInteraction | date : 'short'}}</p>
 
     </div>
 </div>
@@ -13,8 +13,11 @@
                 <td data-title="'Survey Name'" sortable="'surveyName'">
                     {{survey.surveyName}}
                 </td>
+                <td data-title="'Create Date'" sortable="'endDate'">
+                    {{survey.startDate | date : 'short'}}
+                </td>
                 <td data-title="'Completion Date'" sortable="'endDate'">
-                    {{survey.endDate ? (survey.endDate | date) : 'incomplete'}}
+                    {{survey.endDate ? (survey.endDate | date : 'short') : 'incomplete'}}
                 </td>
                 <td data-title="'Pin Code'" sortable="'pinCode'">
                     {{survey.endDate ? '' : survey.pinCode}}

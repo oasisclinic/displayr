@@ -5,14 +5,17 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <h3>Recent Surveys Taken</h3>
+        <h3>Recent Surveys</h3>
         <table ng-table="tableParams" class="table table-hover ng-table-rowselected">
             <tr ng-repeat="survey in $data" ng-click="changeSelection(survey)">
                 <td data-title="'Survey Name'" sortable="'surveyName'">
                     {{survey.surveyName}}
                 </td>
+                <td data-title="'Create Date'" sortable="'endDate'">
+                    {{survey.startDate | date : 'short'}}
+                </td>
                 <td data-title="'Completion Date'" sortable="'endDate'">
-                    {{survey.endDate ? (survey.endDate | date) : 'incomplete'}}
+                    {{survey.endDate ? (survey.endDate | date : 'short') : 'incomplete'}}
                 </td>
                 <td data-title="'Pin Code'" sortable="'pinCode'">
                     {{survey.endDate ? '' : survey.pinCode}}
