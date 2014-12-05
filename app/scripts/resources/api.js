@@ -1,7 +1,9 @@
+'use strict';
+
+var host = 'http://localhost:8080';
+
 angular.module('api', ['ngResource'])
     .factory('patients', ['$resource', function($resource) {
-        var host = 'http://localhost:8080';
-
         return $resource(host + '/api/patients', null, {
             'get': {
                 url: host + '/api/patients/:patientId',
@@ -21,8 +23,29 @@ angular.module('api', ['ngResource'])
             },
         });
     }])
+    .factory('evaluations', ['$resource', function($resource) {
+        return $resource(host + '/api/evaluations/', null, {
+            'byPatientId': {
+                method: 'GET',
+                url: host + '/api/evaluations/results/:patientId',
+                params: {
+                    patientId: '@patientId'
+                },
+                isArray: true
+            },
+            'bySurveyId': {
+                method: 'GET',
+                url: host + '/api/evaluations/results/:patientId/:surveyId',
+                params: {
+                    surveyId: '@surveyId',
+                    patientId: '@patientId'
+                },
+                isArray: true
+            },
+        });
+
+    }])
     .factory('surveys', ['$resource', function($resource) {
-        var host = 'http://localhost:8080';
         return $resource(host + '/api/surveys/', null, {
             'getAvailable': {
                 method: 'GET',

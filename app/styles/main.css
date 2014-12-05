@@ -101,3 +101,9 @@ body {
 .ng-table-rowselected tr {
     cursor: pointer;
 }
+.ng-table th {
+    text-align: left;
+}
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
