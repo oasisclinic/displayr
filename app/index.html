@@ -1,6 +1,7 @@
-<octype html>
+<!DOCTYPE html>
 <html class="no-js">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
@@ -15,13 +16,15 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-  </head>
-  <body ng-app="frontendMark2App">
+</head>
+
+<body ng-app="frontendMark2App">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
+<<<<<<< HEAD
     <div class="container-fluid">
       <div class="header">
         <ul class="nav nav-pills pull-right" ng-show="false" ng-cloak>
@@ -37,18 +40,40 @@
       <div class="footer">
       </div>
     </div>
+=======
+>>>>>>> bradley
 
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">OASIS Database</a>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="#" ui-sref="search">Patient Search</a>
+                    </li>
+                    <li><a href="#" ui-sref="survey.give">Give Survey</a>
+                    </li>
+                    <li><a href="#" ui-sref="survey.take">Take Survey</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
 
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
@@ -73,23 +98,23 @@
     <script src="bower_components/highcharts/highcharts-more.js"></script>
     <script src="bower_components/highcharts/modules/exporting.js"></script>
     <script src="bower_components/ng-table/ng-table.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/resources/patients.js"></script>
-        <script src="scripts/resources/utils.js"></script>
-        <script src="scripts/controllers/dashboard.js"></script>
-        <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/controllers/addpatient.js"></script>
-        <script src="scripts/controllers/modalerror.js"></script>
-        <script src="scripts/controllers/survey.js"></script>
-        <script src="scripts/controllers/patientprofile.js"></script>
-        <script src="scripts/controllers/patientgraph.js"></script>
-        <script src="scripts/controllers/searchpatients.js"></script>
-        <script src="scripts/resources/surveys.js"</script>
-        
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/resources/api.js"></script>
+    <script src="scripts/controllers/auth.js"></script>
+    <script src="scripts/auth/http-auth-interceptor.js"></script>
+    <script src="scripts/controllers/addpatient.js"></script>
+    <script src="scripts/controllers/survey.js"></script>
+    <script src="scripts/controllers/profile.js"></script>
+    <script src="scripts/controllers/search.js"></script>
+    <script src="scripts/controllers/chart.js"></script>
+    <script src="scripts/controllers/response.js"></script>
+    <!-- endbuild -->
 </body>
+
 </html>

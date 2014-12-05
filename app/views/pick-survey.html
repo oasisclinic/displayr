@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-md-12">
+    	<h1 class="page-header">Select Survey</h1>
+        <table ng-table="tableParams" show-filter="true" class="table table-hover ng-table-rowselected">
+            <tr ng-repeat="survey in $data" ng-click="changeSelection(survey)">
+                <td data-title="'Survey Name'" sortable="'name'" filter="{ 'name': 'text' }">
+                    {{survey.name}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

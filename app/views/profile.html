@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h1 class="page-header">{{patient.firstName + " " + patient.lastName}}</h1>
+        <p>Last Interaction: {{patient.lastInteraction | date}}</p>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Surveys Taken</h3>
+        <table ng-table="tableParams" class="table table-hover ng-table-rowselected">
+            <tr ng-repeat="survey in $data" ng-click="changeSelection(survey)">
+                <td data-title="'Survey Name'" sortable="'surveyName'">
+                    {{survey.surveyName}}
+                </td>
+                <td data-title="'Completion Date'" sortable="'endDate'">
+                    {{survey.endDate ? (survey.endDate | date) : 'incomplete'}}
+                </td>
+                <td class="text-right">
+                    <a href="" class="btn btn-primary btn-sm" ng-if="survey.endDate" ui-sref="patients.response({evaluationId: survey.evaluationId})">View Response</a>
+                    <a href="" class="btn btn-success btn-sm" ng-if="survey.endDate" ui-sref="patients.chart({surveyId: survey.surveyId})">Chart</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div ui-view></div>
