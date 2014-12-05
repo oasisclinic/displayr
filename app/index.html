@@ -1,6 +1,7 @@
-<octype html>
+<!DOCTYPE html>
 <html class="no-js">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
@@ -15,40 +16,80 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-  </head>
-  <body ng-app="frontendMark2App">
+</head>
+
+<body ng-app="frontendMark2App">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">OASIS Database</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li role="presentation"><a href="#/dashboard">Home</a>
+                    </li>
+                    <li role="presentation"><a href="#/searchpatients">Search</a>
+                    </li>
+                    <li role="presentation"><a href="#/addpatient">Add Patient</a>
+                    </li>
+                    <li role="presentation"><a href="#/survey">Survey</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container-fluid">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="#/dashboard">Dash</a></li>
-            <li role="presentation"><a href="#/searchpatients">Search</a></li>
-            <li role="presentation"><a href="#/addpatient">Add Patient</a></li>
-            <li role="presentation"><a href="#/survey">Survey</a></li>
-        </ul>
-        <h3 class="text-muted">frontendMark2</h3>
-      </div>
-      <div ng-view=""></div>
-
-      <div class="footer">
-      </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li><a href="#">Reports</a>
+                    </li>
+                    <li><a href="#">Analytics</a>
+                    </li>
+                    <li><a href="#">Export</a>
+                    </li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li><a href="">Nav item</a>
+                    </li>
+                    <li><a href="">Nav item again</a>
+                    </li>
+                    <li><a href="">One more nav</a>
+                    </li>
+                    <li><a href="">Another nav item</a>
+                    </li>
+                    <li><a href="">More navigation</a>
+                    </li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li><a href="">Nav item again</a>
+                    </li>
+                    <li><a href="">One more nav</a>
+                    </li>
+                    <li><a href="">Another nav item</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div ng-view=""></div>
+            </div>
+        </div>
     </div>
-
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID 
-     <script>
-       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>-->
 
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
@@ -73,25 +114,25 @@
     <script src="bower_components/highcharts/highcharts-more.js"></script>
     <script src="bower_components/highcharts/modules/exporting.js"></script>
     <script src="bower_components/ng-table/ng-table.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/resources/patients.js"></script>
-        <script src="scripts/resources/utils.js"></script>
-        <script src="scripts/controllers/dashboard.js"></script>
-        <script src="scripts/controllers/auth.js"></script>
-        <script src="scripts/auth/http-auth-interceptor.js"></script>
-        <script src="scripts/controllers/addpatient.js"></script>
-        <script src="scripts/controllers/modalerror.js"></script>
-        <script src="scripts/controllers/survey.js"></script>
-        <script src="scripts/controllers/patientprofile.js"></script>
-        <script src="scripts/controllers/patientgraph.js"></script>
-        <script src="scripts/controllers/searchpatients.js"></script>
-        <script src="scripts/resources/surveys.js"</script>
-        
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/resources/patients.js"></script>
+    <script src="scripts/resources/utils.js"></script>
+    <script src="scripts/controllers/dashboard.js"></script>
+    <script src="scripts/controllers/auth.js"></script>
+    <script src="scripts/auth/http-auth-interceptor.js"></script>
+    <script src="scripts/controllers/addpatient.js"></script>
+    <script src="scripts/controllers/modalerror.js"></script>
+    <script src="scripts/controllers/survey.js"></script>
+    <script src="scripts/controllers/patientprofile.js"></script>
+    <script src="scripts/controllers/patientgraph.js"></script>
+    <script src="scripts/controllers/searchpatients.js"></script>
+    <script src="scripts/resources/surveys.js"></script>
+    <!-- endbuild -->
 </body>
+
 </html>
