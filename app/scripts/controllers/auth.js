@@ -43,13 +43,13 @@ angular.module('auth', [])
         };
         return this;
     })
-    .config(['$stateProvider', function($stateProvider) {
-        $stateProvider.state('dashboard', {
-            url: '/dashboard',
-            templateUrl: 'dashboard/index.html',
-            data: {}
-        });
-    }])
+    // .config(['$stateProvider', function($stateProvider) {
+    //     $stateProvider.state('dashboard', {
+    //         url: '/dashboard',
+    //         templateUrl: 'dashboard/index.html',
+    //         data: {}
+    //     });
+    // }])
     // .run(function($rootScope, AUTH_EVENTS, AuthService) {
     //   $rootScope.$on('$stateChangeStart', function(event, next) {
     //     // var authorizedRoles = next.data.authorizedRoles;

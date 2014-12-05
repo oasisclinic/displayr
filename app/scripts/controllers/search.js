@@ -8,20 +8,13 @@
  * Controller of the frontendMark2App
  */
 angular.module('frontendMark2App')
-    .controller('SearchpatientsCtrl', function($scope, $filter, $resource, Patients, ngTableParams) {
+    .controller('SearchCtrl', function($scope, $filter, $resource, $state, patients, ngTableParams) {
 
-        // var Patients = $resource('http://localhost:8080/api/patients');
-        Patients.all().$promise.then(function(data) {
+        patients.all().$promise.then(function(data) {
 
             $scope.tableParams = new ngTableParams({
                 page: 1,
-                count: 10,
-                filter: {
-
-                },
-                sorting: {
-                    lastName: 'asc'
-                }
+                count: 10
             }, {
                 total: 0,
                 getData: function($defer, params) {
@@ -43,7 +36,7 @@ angular.module('frontendMark2App')
         });
 
         $scope.changeSelection = function(patient) {
-            console.info(patient);
+            $state.go('profile', {patientId: patient.patientId});
         };
 
     });
