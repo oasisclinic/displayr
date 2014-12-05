@@ -17,7 +17,6 @@ angular
         'ngSanitize',
         'ngTouch',
         'api',
-        //'resourceUtils',
         'ui.bootstrap',
         'ui.bootstrap.tpls',
         'ui.bootstrap.modal',
@@ -60,19 +59,30 @@ angular
             templateUrl: 'views/search.html',
             controller: 'SearchCtrl'
         });
+
+        // survey administration
         $stateProvider.state('survey', {
-            url: '/start',
-            templateUrl: 'views/search.html',
-            controller: 'SearchCtrl'
+            url: '/surveys',
+            template: '<div ui-view></div>'
+        });
+        $stateProvider.state('survey.give', {
+            url: '/give',
+            templateUrl: 'views/pick-survey.html',
+            controller: 'GiveSurveyCtrl'
+        });
+        $stateProvider.state('survey.to', {
+            url: '/give/{surveyId}/to',
+            templateUrl: 'views/to-survey.html',
+            controller: 'ToSurveyCtrl'
+        });
+        $stateProvider.state('survey.ready', {
+            url: '/give/{surveyId}/to{patientId}',
+            templateUrl: 'views/ready-survey.html',
+            controller: 'SurveyReadyCtrl'
         });
 
     }])
     .run(function($rootScope, $modal, authService) {
-        var errorA;
-        //var loginModal;
-        $rootScope.$on('apiError', function(event, data) {
-            errorA = $modal.open(data);
-        });
         $rootScope.$on('event:auth-loginRequired', function() {
             if (!$rootScope.loginModal) {
                 $rootScope.loginModal = $modal.open({
