@@ -29,6 +29,11 @@ angular
     ])
     .config(['$stateProvider', function($stateProvider) {
 
+        $stateProvider.state('home', {
+            url: '',
+            template: 'Welcome!'
+        });
+
         $stateProvider.state('patients', {
             url: '/patients/{patientId}',
             template: '<div ui-view></div>',
@@ -40,6 +45,8 @@ angular
                 })
             }
         });
+
+        // view survey results
         $stateProvider.state('patients.profile', {
             url: '/profile',
             templateUrl: 'views/profile.html',
@@ -55,6 +62,8 @@ angular
             templateUrl: 'views/response.html',
             controller: 'ResponseCtrl'
         });
+
+        // find a patient
         $stateProvider.state('search', {
             url: '/search',
             templateUrl: 'views/search.html',
@@ -87,6 +96,13 @@ angular
             controller: 'TakeSurveyCtrl'
         });
 
+        // create a patient
+        $stateProvider.state('add', {
+            url: '/add',
+            templateUrl: 'views/add.html',
+            controller: 'AddPatientCtrl'
+        });
+
     }])
     .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
@@ -97,7 +113,7 @@ angular
                 responseError: function(rejection) {
 
                     var modalOptions = {
-                        templateUrl: 'views/modals/api-error.html',
+                        templateUrl: 'views/modals/generic-modal.html',
                         resolve: {
                             message: function() {
                                 if(rejection.data) {
@@ -106,13 +122,13 @@ angular
                                     return 'We could not get in touch with the server. Please check your internet connection or contact an administrator.';
                                 }
                             },
-                            status: function() {
-                                return rejection.status;
+                            title: function() {
+                                return 'Oh No!'
                             }
                         },
-                        controller: function($scope, message, status) {
+                        controller: function($scope, message, title) {
                             $scope.message = message;
-                            $scope.status = status;
+                            $scope.title = title;
                         }
                     };
 

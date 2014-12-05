@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-12">
         <h1 class="page-header">{{patient.firstName + " " + patient.lastName}}</h1>
-        <p>Last Interaction: {{patient.lastInteraction | date}}</p>
+        <p>ID: {{patient.medicalId}}<br>Last Interaction: {{patient.lastInteraction | date}}</p>
 
     </div>
 </div>
@@ -28,4 +28,3 @@
         </table>
     </div>
 </div>
-<div ui-view></div>
