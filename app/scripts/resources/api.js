@@ -41,6 +41,13 @@ angular.module('api', ['ngResource'])
                     patientId: '@patientId'
                 }
             },
+            'byId': {
+                method: 'GET',
+                url: host + '/api/evaluations/:evaluationId',
+                params: {
+                    surveyId: '@evaluationId'
+                }
+            }
         });
 
     }])

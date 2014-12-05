@@ -8,7 +8,7 @@
  * Controller of the frontendMark2App
  */
 angular.module('frontendMark2App')
-    .controller('ChartCtrl', function($scope, $stateParams, $filter, patients, evaluations) {
+    .controller('ChartCtrl', function($scope, $stateParams, $filter, evaluations) {
 
         evaluations.bySurveyId({
             patientId: $stateParams.patientId,
