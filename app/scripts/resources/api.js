@@ -1,12 +1,10 @@
 'use strict';
 
-var host = 'http://localhost:8080';
-
 angular.module('api', ['ngResource'])
-    .factory('patients', ['$resource', function($resource) {
-        return $resource(host + '/api/patients', null, {
+    .factory('patients', ['$resource', '$rootScope', function($resource, $rootScope) {
+        return $resource($rootScope.domain + '/patients', null, {
             'get': {
-                url: host + '/api/patients/:patientId',
+                url: $rootScope.domain + '/patients/:patientId',
                 method: 'GET',
                 params: {
                     patientId: '@patientId'
@@ -14,7 +12,7 @@ angular.module('api', ['ngResource'])
             },
             //Patients.createPatient({}, {patientObj}), empty object is param placeholder.
             'createPatient': {
-                url: host + '/api/patients/create',
+                url: $rootScope.domain + '/patients/create',
                 method: 'POST',
             },
             'all': {
@@ -23,11 +21,11 @@ angular.module('api', ['ngResource'])
             },
         });
     }])
-    .factory('evaluations', ['$resource', function($resource) {
-        return $resource(host + '/api/evaluations/', null, {
+    .factory('evaluations', ['$resource', '$rootScope', function($resource, $rootScope) {
+        return $resource($rootScope.domain + '/evaluations/', null, {
             'byPatientId': {
                 method: 'GET',
-                url: host + '/api/evaluations/results/:patientId',
+                url: $rootScope.domain + '/evaluations/results/:patientId',
                 params: {
                     patientId: '@patientId'
                 },
@@ -35,7 +33,7 @@ angular.module('api', ['ngResource'])
             },
             'bySurveyId': {
                 method: 'GET',
-                url: host + '/api/evaluations/results/:patientId/:surveyId',
+                url: $rootScope.domain + '/evaluations/results/:patientId/:surveyId',
                 params: {
                     surveyId: '@surveyId',
                     patientId: '@patientId'
@@ -43,21 +41,21 @@ angular.module('api', ['ngResource'])
             },
             'byId': {
                 method: 'GET',
-                url: host + '/api/evaluations/:evaluationId',
+                url: $rootScope.domain + '/evaluations/:evaluationId',
                 params: {
                     surveyId: '@evaluationId'
                 }
             },
             'remove': {
                 method: 'DELETE',
-                url: host + '/api/evaluations/:evaluationId',
+                url: $rootScope.domain + '/evaluations/:evaluationId',
                 params: {
                     surveyId: '@evaluationId'
                 }
             },
             'make': {
                 method: 'GET',
-                url: host + '/api/evaluations/start/:patientId/:surveyId',
+                url: $rootScope.domain + '/evaluations/start/:patientId/:surveyId',
                 params: {
                     surveyId: '@surveyId',
                     patientId: '@patientId'
@@ -65,17 +63,25 @@ angular.module('api', ['ngResource'])
             },
             'recent': {
                 method: 'GET',
-                url: host + '/api/evaluations?limit=:limit',
+                url: $rootScope.domain + '/evaluations?limit=:limit',
                 params: {
                     limit: '@limit',
                 },
                 isArray: true
+            },
+            'complete': {
+                method: 'GET',
+                url: $rootScope.domain + '/evaluations/complete/:requestId/:responseId',
+                params: {
+                    requestId: '@requestId',
+                    responseId: '@responseId'
+                }
             }
         });
 
     }])
-    .factory('surveys', ['$resource', function($resource) {
-        return $resource(host + '/api/surveys/', null, {
+    .factory('surveys', ['$resource', '$rootScope', function($resource, $rootScope) {
+        return $resource($rootScope.domain + '/surveys/', null, {
             'get': {
                 method: 'GET',
                 isArray: true

@@ -8,7 +8,7 @@
  * Controller of the frontendMark2App
  */
 angular.module('frontendMark2App')
-    .controller('HomeCtrl', function($scope, $stateParams, $filter, evaluations, ngTableParams) {
+    .controller('HomeCtrl', ['$scope', '$stateParams', '$filter', 'evaluations', 'ngTableParams', function($scope, $stateParams, $filter, evaluations, ngTableParams) {
 
             // load evaluations
             evaluations.recent({
@@ -35,4 +35,4 @@ angular.module('frontendMark2App')
                 $scope.data = data;
             });
 
-    });
+    }]);

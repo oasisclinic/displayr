@@ -8,7 +8,7 @@
  * Controller of the frontendMark2App
  */
 angular.module('frontendMark2App')
-    .controller('GiveSurveyCtrl', function($scope, $filter, $state, surveys, ngTableParams) {
+    .controller('GiveSurveyCtrl', ['$scope', '$filter', '$state', 'surveys', 'ngTableParams', function($scope, $filter, $state, surveys, ngTableParams) {
 
         surveys.get().$promise.then(function(data) {
 
@@ -41,8 +41,8 @@ angular.module('frontendMark2App')
             });
         };
 
-    })
-    .controller('ToSurveyCtrl', function($scope, $filter, $state, $stateParams, patients, ngTableParams) {
+    }])
+    .controller('ToSurveyCtrl', ['$scope', '$filter', '$state', '$stateParams', 'patients', 'ngTableParams', function($scope, $filter, $state, $stateParams, patients, ngTableParams) {
 
         patients.all().$promise.then(function(data) {
 
@@ -76,22 +76,34 @@ angular.module('frontendMark2App')
             });
         };
 
-    })
-    .controller('SurveyReadyCtrl', function($stateParams, $scope, evaluations) {
+    }])
+    .controller('SurveyReadyCtrl', ['$stateParams', '$scope', 'evaluations', function($stateParams, $scope, evaluations) {
 
         $scope.pin = evaluations.make({
             patientId: $stateParams.patientId,
             surveyId: $stateParams.surveyId
         });
 
-    })
-    .controller('TakeSurveyCtrl', function($scope, $http, $window) {
+    }])
+    .controller('TakeSurveyCtrl', ['$scope', '$rootScope', '$http', '$window', function($scope, $rootScope, $http, $window) {
 
         $scope.pin = function(pinCode) {
-            $http.get("http://localhost:8080/api/evaluations/start/" + pinCode)
-            .success(function(response) {
-                $window.location.href = response.url;
-            });
+            $http.get($rootScope.domain + "/evaluations/start/" + pinCode)
+                .success(function(response) {
+                    $window.location.href = response.url;
+                });
         }
 
-    });
+    }])
+    .controller('CompleteCtrl', ['$scope', '$stateParams', 'evaluations', function($scope, $stateParams, evaluations) {
+
+        evaluations.complete({
+            requestId: $stateParams.requestId,
+            responseId: $stateParams.responseId
+        }).$promise.then(function(data) {
+
+            $scope.evaluation = data;
+
+        });
+
+    }]);

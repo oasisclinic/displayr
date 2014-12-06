@@ -8,12 +8,12 @@
  * Controller of the frontendMark2App
  */
 angular.module('auth', [])
-    .factory('securityService', function($http, Session) {
+    .factory('securityService', ['$http', '$rootScope', 'Session', function($http, $rootScope, Session) {
         var securityService = {};
 
         securityService.login = function(credentials) {
             return $http
-                .post('http://localhost:8080/api/authenticate', credentials)
+                .post($rootScope.domain + '/authenticate', credentials)
                 .then(function(res) {
                     Session.create(res.data.token);
                     return;
@@ -25,7 +25,7 @@ angular.module('auth', [])
         };
 
         return securityService;
-    })
+    }])
     .service('Session', function() {
         this.create = function(sessionId) {
             this.id = sessionId;
@@ -35,15 +35,15 @@ angular.module('auth', [])
         };
         return this;
     })
-    .config(function($httpProvider) {
+    .config(['$httpProvider', function($httpProvider) {
         $httpProvider.interceptors.push([
             '$injector',
             function($injector) {
                 return $injector.get('AuthInterceptor');
             }
         ]);
-    })
-    .factory('AuthInterceptor', function($rootScope, $q, Session) {
+    }])
+    .factory('AuthInterceptor', ['$rootScope', '$q', 'Session', function($rootScope, $q, Session) {
         return {
             request: function(config) {
                 if (Session.id) {
@@ -52,8 +52,8 @@ angular.module('auth', [])
                 return config;
             }
         };
-    })
-    .controller('LoginCtrl', function($scope, $rootScope, authService, securityService, Session) {
+    }])
+    .controller('LoginCtrl', ['$scope', '$rootScope', 'authService', 'securityService', 'Session', function($scope, $rootScope, authService, securityService, Session) {
         $scope.credentials = {
             username: '',
             password: ''
@@ -72,4 +72,4 @@ angular.module('auth', [])
                 authService.loginCancelled();
             });
         };
-    });
+    }]);

@@ -8,7 +8,7 @@
  * Controller of the frontendMark2App
  */
 angular.module('frontendMark2App')
-    .controller('AddPatientCtrl', function($scope, $modal, $state, patients) {
+    .controller('AddPatientCtrl', ['$scope', '$modal', '$state', 'patients', function($scope, $modal, $state, patients) {
 
         $scope.patient = null;
 
@@ -35,4 +35,4 @@ angular.module('frontendMark2App')
             });
         };
 
-    });
+    }]);

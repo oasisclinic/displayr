@@ -8,7 +8,7 @@
  * Controller of the frontendMark2App
  */
 angular.module('frontendMark2App')
-    .controller('ChartCtrl', function($scope, $stateParams, $filter, evaluations) {
+    .controller('ChartCtrl', ['$scope', '$stateParams', '$filter', 'evaluations', function($scope, $stateParams, $filter, evaluations) {
 
         evaluations.bySurveyId({
             patientId: $stateParams.patientId,
@@ -61,7 +61,11 @@ angular.module('frontendMark2App')
             options: {
                 chart: {
                     type: 'spline',
-                    zoomType: 'x'
+                    zoomType: 'x',
+                    height: '800'
+                },
+                legend: {
+                    layout: 'vertical'
                 }
             },
             series: null,
@@ -85,4 +89,4 @@ angular.module('frontendMark2App')
             loading: true
         }
 
-    });
+    }]);

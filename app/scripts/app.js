@@ -102,6 +102,12 @@ angular
             controller: 'TakeSurveyCtrl'
         });
 
+        $stateProvider.state('complete', {
+            url: '/complete/{requestId}/{responseId}',
+            templateUrl: 'views/complete-survey.html',
+            controller: 'CompleteCtrl'
+        });
+
         // create a patient
         $stateProvider.state('add', {
             url: '/add',
@@ -113,7 +119,10 @@ angular
     .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
     }])
-    .run(function($rootScope, $modal, authService) {
+    .run(['$rootScope', '$modal', 'authService', function($rootScope, $modal, authService) {
+
+        $rootScope.domain = "http://54.173.152.217/api";
+
         $rootScope.$on('event:auth-loginRequired', function() {
             if (!$rootScope.loginModal) {
                 $rootScope.loginModal = $modal.open({
@@ -134,4 +143,4 @@ angular
         $rootScope.$on('event:api-error-dismiss', function() {
             $rootScope.apiModal.close();
         });
-    });
+    }]);

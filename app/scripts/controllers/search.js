@@ -8,7 +8,7 @@
  * Controller of the frontendMark2App
  */
 angular.module('frontendMark2App')
-    .controller('SearchCtrl', function($scope, $filter, $resource, $state, patients, ngTableParams) {
+    .controller('SearchCtrl', ['$scope', '$filter', '$resource', '$state', 'patients', 'ngTableParams', function($scope, $filter, $resource, $state, patients, ngTableParams) {
 
         patients.all().$promise.then(function(data) {
 
@@ -39,4 +39,4 @@ angular.module('frontendMark2App')
             $state.go('patients.profile', {patientId: patient.patientId});
         };
 
-    });
+    }]);

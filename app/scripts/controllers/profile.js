@@ -8,7 +8,7 @@
  * Controller of the frontendMark2App
  */
 angular.module('frontendMark2App')
-    .controller('ProfileCtrl', function($scope, $stateParams, $filter, patients, evaluations, ngTableParams) {
+    .controller('ProfileCtrl', ['$scope', '$stateParams', '$filter', 'patients', 'evaluations', 'ngTableParams', function($scope, $stateParams, $filter, patients, evaluations, ngTableParams) {
 
             // load evaluations
             evaluations.byPatientId({
@@ -49,4 +49,4 @@ angular.module('frontendMark2App')
                 });
         };
 
-    });
+    }]);
