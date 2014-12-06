@@ -81,6 +81,9 @@
                                     controller: function($scope, message, title) {
                                         $scope.message = message;
                                         $scope.title = title;
+                                        $scope.close = function()  {
+                                            $rootScope.$broadcast('event:api-error-dismiss', null);
+                                        };
                                     }
                                 };
 

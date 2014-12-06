@@ -9,7 +9,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />-->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/ng-table/ng-table.css" />
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <!-- endbower -->
@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">OASIS Database</a>
+                <a class="navbar-brand" href="" ui-sref="home">OASIS Database</a>
             </div>
             <div class="navbar-collapse collapse navbar-responsive-collapse">
                 </ul>
@@ -97,7 +97,7 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/resources/api.js"></script>
-    <script src="scripts/controllers/auth.js"></script>
+    <script src="scripts/auth/auth.js"></script>
     <script src="scripts/auth/http-auth-interceptor.js"></script>
     <script src="scripts/controllers/add.js"></script>
     <script src="scripts/controllers/survey.js"></script>

@@ -129,6 +129,9 @@ angular
             $rootScope.loginModal.close();
         });
         $rootScope.$on('event:api-error', function(event, options) {
-            $modal.open(options);
+            if(!$rootScope.apiModal) $rootScope.apiModal = $modal.open(options);
+        });
+        $rootScope.$on('event:api-error-dismiss', function() {
+            $rootScope.apiModal.close();
         });
     });
