@@ -121,7 +121,7 @@ angular
     }])
     .run(['$rootScope', '$modal', 'authService', function($rootScope, $modal, authService) {
 
-        $rootScope.domain = "http://54.173.152.217/api";
+        $rootScope.domain = "http://localhost:9000/api";
 
         $rootScope.$on('event:auth-loginRequired', function() {
             if (!$rootScope.loginModal) {
